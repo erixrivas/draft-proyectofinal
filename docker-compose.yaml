@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  api:
+    build: './api'
+#    environment:
+    restart: always
+  web:
+    build: './web'
+#    environment:
+    restart: always    
+  nginx:
+    build: "./ngnix"
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+      - web
