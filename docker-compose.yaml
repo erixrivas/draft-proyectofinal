@@ -3,16 +3,36 @@ version: "3.7"
 services:
   api:
     build: './api'
-#    environment:
+    environment:
+      FLASK_APP: app.py
+      FLASK_ENV: development
+      FLASK_RUN_PORT: 5000
+      FLASK_RUN_HOST: 0.0.0.0
+    # ports:
+    #   - "5000:5000"
+    networks:
+      - app-network      
     restart: always
   web:
     build: './web'
-#    environment:
+    environment:
+      VITE_HOST: 0.0.0.0
+      VITE_PORT: 5173
+    # ports:
+    #   - "5173:5173"
+    networks:
+      - app-network      
     restart: always    
   nginx:
     build: "./ngnix"
     ports:
-      - "8080:80"
+      - "8082:80"
+    networks:
+      - app-network      
     depends_on:
       - api
       - web
+
+networks:
+  app-network:
+    driver: bridge
