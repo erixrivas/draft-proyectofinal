@@ -1,0 +1,38 @@
+https://www.jenkins.io/doc/book/installing/kubernetes/#install-jenkins-with-yaml-files
+kubectl create namespace jenkins
+kubectl apply -f jenkins-pvc.yaml -n jenkins
+kubectl get pvc -n jenkins
+
+kubectl create -f jenkins-deployment.yaml -n jenkins
+kubectl get deployments -n jenkins
+
+
+kubectl create -f jenkins-service.yaml -n jenkins
+kubectl get services -n jenkins
+se copia el puerto liberaqdo 
+minikube ip
+se copia la ip
+
+para entrar se entra en http://<ip>:<puerto>
+
+kubectl get pods -n jenkins
+kubectl logs <pod_name> -n jenkins
+
+*************************************************************
+*************************************************************
+*************************************************************
+
+Jenkins initial setup is required.
+An admin user has been created and a password generated.
+Please use the following password to proceed to installation:
+
+94b73ef6578c4b4692a157f768b2cfef
+
+This may also be found at:
+/var/jenkins_home/secrets/initialAdminPassword
+
+*************************************************************
+*************************************************************
+*************************************************************
+
+kubectl logs jenkins-85bb98d87b-kgz4h -n jenkins --tail=200  -f=true
