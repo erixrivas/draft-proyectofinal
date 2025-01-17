@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.35.0 (HEAD)
+  labels:
+    io.kompose.service: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: api
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.35.0 (HEAD)
+      labels:
+        io.kompose.service: api
+    spec:
+      containers:
+        - name: api
+          image: leopoldox3/api-avatares:v1
+          env:
+            - name: FLASK_APP
+              value: app.py
+            - name: FLASK_ENV
+              value: development
+            - name: FLASK_RUN_HOST
+              value: 0.0.0.0
+            - name: FLASK_RUN_PORT
+              value: "5000"
+      imagePullSecrets:
+        - name: my-registry-secret
+      restartPolicy: Always
