@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+    stages {
+        stage('Install kubectl locally') {
+            steps {
+                script {
+                   sh '''
+                # Descargar kubectl
+                curl -LO "https://dl.k8s.io/release/v1.29.0/bin/linux/amd64/kubectl"
+                chmod +x kubectl
+
+                # Mover kubectl a $HOME/bin
+                mkdir -p $HOME/bin
+                mv kubectl $HOME/bin/
+
+                # Agregar $HOME/bin al PATH
+                export PATH=$HOME/bin:$PATH
+                '''
+                }
+            }
+        }
+        stage('Verify kubectl') {
+            steps {
+                 sh '''
+                  export PATH=$HOME/bin:$PATH
+                kubectl version --client
+                '''
+               
+
+            }
+        }
+        stage('Execute kubectl commands') {
+            steps {
+                withKubeConfig(      serverUrl: 'serverUrl',credentialsId:'ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklqRTJNamszWXpJMlpqaGtZalpsWVRneE5qY3dZekZsWVRJMll6Z3dZMlZpWmpkaE1tWXdaR1JoWkdFNFlqVTRZelJsTnpBeU1UY3lOMkprWXpSa09UTmtOakZqWkdabFl6UXdNMk14TmpJNVpHUXlabVptTmprMk9HRmhPV01pZlEuZXlKemRXSWlPaUpoWkcxcGJpSXNJbUYxWkNJNklrMTVRMngxYzNSbGNrVjRjRzl1WldGd2FXTmxZMnQ1VlhObGNpSXNJbTVpWmlJNk1UWXhNak00TlRrNE1pd2lhV0YwSWpveE5qRXlNemcxT1RnMExDSmxlSEJwY21Wa1gzUnZhMlZ1SWpvaU1qWXdNak13TWpNMlpUSTVNemhtTlRaa056WTBNemN3WldFd04yWXlPR00yWXpobE5EUmxNbU0yTUdFNE5tTTNPR1ZqTXpGaE1URmhaR0prWTJRM1l6RmpOelptTXpKMFlUa3haWE11VFEydkFxVVNLd0ljZlViaXFqTFBibXc9PQ==') {
+                    sh """
+                    export PATH=$HOME/bin:$PATH
+                    # Verificar la conexión con el cluster
+                    kubectl cluster-info
+
+                    # Listar los namespaces
+                    kubectl get namespaces
+
+                    # Listar los pods en el namespace 'default'
+                    kubectl get pods -n default
+                    """
+                }
+            }
+        }
+    }
+    }
+    
