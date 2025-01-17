@@ -36,3 +36,11 @@ This may also be found at:
 *************************************************************
 
 kubectl logs jenkins-85bb98d87b-kgz4h -n jenkins --tail=200  -f=true
+
+
+curl -LO "https://dl.k8s.io/release/v1.29.0/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+
+anadir credenciales 
+kubectl config view --raw -o jsonpath='{.clusters[?(@.name=="minikube")].cluster.server}'
