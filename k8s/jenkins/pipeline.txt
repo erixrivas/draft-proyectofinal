@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Execute kubectl commands') {
             steps {
-                withKubeConfig(      serverUrl: 'serverUrl',credentialsId:'ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNklqRTJNamszWXpJMlpqaGtZalpsWVRneE5qY3dZekZsWVRJMll6Z3dZMlZpWmpkaE1tWXdaR1JoWkdFNFlqVTRZelJsTnpBeU1UY3lOMkprWXpSa09UTmtOakZqWkdabFl6UXdNMk14TmpJNVpHUXlabVptTmprMk9HRmhPV01pZlEuZXlKemRXSWlPaUpoWkcxcGJpSXNJbUYxWkNJNklrMTVRMngxYzNSbGNrVjRjRzl1WldGd2FXTmxZMnQ1VlhObGNpSXNJbTVpWmlJNk1UWXhNak00TlRrNE1pd2lhV0YwSWpveE5qRXlNemcxT1RnMExDSmxlSEJwY21Wa1gzUnZhMlZ1SWpvaU1qWXdNak13TWpNMlpUSTVNemhtTlRaa056WTBNemN3WldFd04yWXlPR00yWXpobE5EUmxNbU0yTUdFNE5tTTNPR1ZqTXpGaE1URmhaR0prWTJRM1l6RmpOelptTXpKMFlUa3haWE11VFEydkFxVVNLd0ljZlViaXFqTFBibXc9PQ==') {
+              withKubeConfig([credentialsId: 'erix-token', serverUrl: 'https://192.168.49.2:8443']) {
                     sh """
                     export PATH=$HOME/bin:$PATH
                     # Verificar la conexión con el cluster
@@ -42,10 +42,11 @@ pipeline {
 
                     # Listar los pods en el namespace 'default'
                     kubectl get pods -n default
+                    kubectl get pods -n jenkins
                     """
                 }
+            
             }
         }
     }
-    }
-    
+}   
