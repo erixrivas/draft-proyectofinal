@@ -15,7 +15,7 @@ se copia la ip
 
 para entrar se entra en http://<ip>:<puerto>
 
-kubectl get pods -n jenkins
+
 kubectl logs <pod_name> -n jenkins
 
 *************************************************************
@@ -44,3 +44,8 @@ sudo mv kubectl /usr/local/bin/
 
 anadir credenciales 
 kubectl config view --raw -o jsonpath='{.clusters[?(@.name=="minikube")].cluster.server}'
+
+kubectl create serviceaccount erix
+kubectl create token erix
+kubectl apply -f erix-rolebinding.yaml
+kubectl delete rolebinding erix-rolebinding -n default
