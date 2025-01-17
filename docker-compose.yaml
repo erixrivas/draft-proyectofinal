@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   api:
-    build: './api'
+    image: leopoldox3/api-avatares:v1
     environment:
       FLASK_APP: app.py
       FLASK_ENV: development
@@ -14,7 +14,7 @@ services:
       - app-network      
     restart: always
   web:
-    build: './web'
+    image: leopoldox3/web-avatares:v1
     environment:
       VITE_HOST: 0.0.0.0
       VITE_PORT: 5173
@@ -24,7 +24,7 @@ services:
       - app-network      
     restart: always    
   nginx:
-    build: "./ngnix"
+    image: leopoldox3/nginx-avatares:v1
     ports:
       - "8082:80"
     networks:
