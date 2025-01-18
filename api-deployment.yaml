@@ -23,6 +23,7 @@ spec:
       containers:
         - name: api
           image: leopoldox3/api-avatares:v1
+          imagePullPolicy: Always
           env:
             - name: FLASK_APP
               value: app.py
@@ -32,6 +33,6 @@ spec:
               value: 0.0.0.0
             - name: FLASK_RUN_PORT
               value: "5000"
-      imagePullSecrets:
-        - name: my-registry-secret
+      # imagePullSecrets:
+      #   - name: my-registry-secret
       restartPolicy: Always

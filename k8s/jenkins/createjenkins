@@ -49,3 +49,17 @@ kubectl create serviceaccount erix
 kubectl create token erix
 kubectl apply -f erix-rolebinding.yaml
 kubectl delete rolebinding erix-rolebinding -n default
+
+
+kubectl delete -n dev -f api-deployment.yaml,app-network-networkpolicy.yaml,nginx-deployment.yaml,nginx-service.yaml,web-deployment.yaml 
+
+kubectl apply -n dev -f api-deployment.yaml,nginx-deployment.yaml,web-deployment.yaml 
+
+kubectl apply -n dev -f  app-network-networkpolicy.yaml  nginx-service.yaml 
+
+
+
+kubectl -n dev expose deployment nginx --type=NodePort --port=80
+
+kubectl -n dev get service nginx
+minikube -n dev service nginx --url

@@ -1,6 +1,9 @@
-establecer variables de entorno en docker-cpmpose
-crear un deployment.yaml;
-correo en mikibube
-hacer curl para actualizar ngnix con las rutas correctas
-mejorar observabilidad 
-crear deployment en jenkins
+intergar jenkins con github 
+
+ingres para exponer servicio
+
+traer grafana y prometehus
+
+hacer pipelines por enviromment 
+
+automatizart un poco el despiegue

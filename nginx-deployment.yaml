@@ -23,9 +23,10 @@ spec:
       containers:
         - name: nginx
           image: leopoldox3/nginx-avatares:v1
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
               protocol: TCP
-      imagePullSecrets:
-        - name: my-registry-secret
+      # imagePullSecrets:
+      #   - name: my-registry-secret
       restartPolicy: Always

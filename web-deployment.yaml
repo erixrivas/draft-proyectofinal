@@ -23,11 +23,12 @@ spec:
       containers:
         - name: web
           image: leopoldox3/web-avatares:v1
+          imagePullPolicy: Always
           env:
             - name: VITE_HOST
               value: 0.0.0.0
             - name: VITE_PORT
               value: "5173"
-      imagePullSecrets:
-        - name: my-registry-secret
+#      imagePullSecrets:
+#        - name: my-registry-secret
       restartPolicy: Always
