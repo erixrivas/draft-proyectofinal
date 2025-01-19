@@ -1,10 +1,10 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: erix-cluster-admin
+  name: admin-jenkins-cluster-admin
 subjects:
 - kind: ServiceAccount
-  name: erix
+  name: admin-jenkins
   namespace: default
 roleRef:
   apiGroup: rbac.authorization.k8s.io

@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+                    // Clonamos el repositorio desde GitHub
+                git url: 'https://github.com/erixrivas/draft-proyectofinal.git', credentialsId: 'githuberix', branch: 'folder-refactor'
+                 sh """
+                 ls 
+                 cd draft-proyectofinal/k8s/dev/api
+                 ls
+                 """
+            }
+        }
+    }
+}

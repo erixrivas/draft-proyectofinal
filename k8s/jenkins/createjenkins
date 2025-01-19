@@ -9,6 +9,16 @@ kubectl get deployments -n jenkins
 
 kubectl create -f jenkins-service.yaml -n jenkins
 kubectl get services -n jenkins
+
+
+kubectl create serviceaccount admin-jenkins
+kubectl create token admin-jenkins
+kubectl apply -f admin-jenkins-rolebinding.yaml
+
+#kubectl delete rolebinding admin-jenkins-rolebinding -n default
+
+
+
 se copia el puerto liberaqdo 
 minikube ip
 se copia la ip
@@ -16,7 +26,7 @@ se copia la ip
 para entrar se entra en http://<ip>:<puerto>
 
 
-kubectl logs <pod_name> -n jenkins
+kubectl logs jenkins-766ffcc74-rmmk7 -n jenkins
 
 *************************************************************
 *************************************************************
@@ -45,10 +55,6 @@ sudo mv kubectl /usr/local/bin/
 anadir credenciales 
 kubectl config view --raw -o jsonpath='{.clusters[?(@.name=="minikube")].cluster.server}'
 
-kubectl create serviceaccount erix
-kubectl create token erix
-kubectl apply -f erix-rolebinding.yaml
-kubectl delete rolebinding erix-rolebinding -n default
 
 
 kubectl delete -n dev -f api-deployment.yaml,app-network-networkpolicy.yaml,nginx-deployment.yaml,nginx-service.yaml,web-deployment.yaml 
@@ -63,3 +69,6 @@ kubectl -n dev expose deployment nginx --type=NodePort --port=80
 
 kubectl -n dev get service nginx
 minikube -n dev service nginx --url
+
+
+eyJhbGciOiJSUzI1NiIsImtpZCI6ImFXTTJWZUcwYXF1TE53YjVzMGMxc2JfalRtQVIzb3B4OHNvQ1BpVFZFMTgifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzM3MjQ1ODgxLCJpYXQiOjE3MzcyNDIyODEsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJkZWZhdWx0Iiwic2VydmljZWFjY291bnQiOnsibmFtZSI6ImFkbWluLWplbmtpbnMiLCJ1aWQiOiI1MjgzOTg1NC1iMmNjLTQzZTktOGE4My1mNTljYmE5ZTlmMmIifX0sIm5iZiI6MTczNzI0MjI4MSwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OmRlZmF1bHQ6YWRtaW4tamVua2lucyJ9.DcKp-rDdVLCNAkWmZceFNPyuPx6gJxPceQ9qaI67UpLcq8YDhQTYDsXrm6jI8aSYG83PMIS3H1K6wEl0LNB5WqnZ320uUEKdMneavINOL8skLL0WcKE7Yk0m8oh27RuM-tcWBNzMC01Ce7KDEqYPUsdDQptMizdtLAEEVX-6-s3UDYo71XFe4Ckp9_Tg3jb1X-BY5ymrq-2TOKZkxJqwIcG50emftdDdPV0FmgSwOb7SpKlIQ8Q6rL8mW79hW8YFqZBjuWkNWVuSoxLNjPOKVqTV56uXYEiLSnNXy95awOMUtBVhVhS-YrCKWs6kSDSESQnD81QpgphOBE7BH6XT4g
