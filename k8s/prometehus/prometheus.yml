@@ -12,9 +12,9 @@ scrape_configs:
   # Trabajo para recolectar métricas de la API (backend)
   - job_name: "api"
     static_configs:
-      - targets: ["api:5000"] # Dirección del servicio y puerto del sidecar
+      - targets: ["api.dev.local:5000"] # Dirección del servicio y puerto del sidecar
     metrics_path: /metrics # Ruta donde el sidecar expone las métricas
   - job_name: "web"
     static_configs:
-      - targets: ["web:5173"] # Dirección del servicio y puerto del sidecar
+      - targets: ["web.dev.local:5173"] # Dirección del servicio y puerto del sidecar
     metrics_path: /metrics # Ruta donde el sidecar expone las métricas
