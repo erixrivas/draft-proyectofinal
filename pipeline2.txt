@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello3') {
+        stage('Hello31') {
             steps {
                 echo 'Hello World16'
                     // Clonamos el repositorio desde GitHub
