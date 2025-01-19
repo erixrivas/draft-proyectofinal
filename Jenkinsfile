@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Hello3') {
             steps {
-                echo 'Hello World20'
+                echo 'Hello World21'
                     // Clonamos el repositorio desde GitHub
                 git url: 'https://github.com/erixrivas/draft-proyectofinal.git', credentialsId: 'githuberix', branch: 'folder-refactor'
                  sh """
