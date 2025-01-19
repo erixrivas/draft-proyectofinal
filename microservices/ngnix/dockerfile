@@ -1,5 +1,14 @@
-FROM nginx:alpine
+# Usar la imagen oficial de OpenResty con soporte para LuaJIT
+FROM openresty/openresty:latest
 
-COPY nginx.conf /etc/nginx/nginx.conf
+# Copiar el archivo de configuración de Nginx con soporte Lua
+COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 
-CMD ["nginx", "-g", "daemon off;"]
+ENV API_HOST=localhost
+ENV WEB_HOST=localhost
+
+# Exponer el puerto 80 para servir tráfico web
+EXPOSE 80
+
+# Comando para iniciar OpenResty
+CMD ["openresty", "-g", "daemon off;"]

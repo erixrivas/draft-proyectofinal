@@ -32,12 +32,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: nginx-secrets-dev # Referencia al Secret de dev
-                  key: api_host
+                  key: API_HOST
 
             - name: WEB_HOST
               valueFrom:
                 secretKeyRef:
                   name: nginx-secrets-dev # Referencia al Secret de dev
-                  key: web_host
+                  key: WEB_HOST
 
       restartPolicy: Always
