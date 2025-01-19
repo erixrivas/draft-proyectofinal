@@ -47,12 +47,12 @@ pipeline {
                 
                     
                     """
-                        git url: 'https://github.com/erixrivas/draft-proyectofinal.git', credentialsId: 'githuberix', branch: 'folder-refactor'
+                        git url: 'https://github.com/erixrivas/draft-proyectofinal.git', credentialsId: 'githuberix', branch: 'add-dockerhub'
                 }
             }}
         stage('deploy dev') {
             steps {
-                git url: 'https://github.com/erixrivas/draft-proyectofinal.git', credentialsId: 'githuberix', branch: 'folder-refactor'
+                git url: 'https://github.com/erixrivas/draft-proyectofinal.git', credentialsId: 'githuberix', branch: 'add-dockerhub'
                 withKubeConfig([credentialsId: 'minikube-token', serverUrl: 'https://192.168.49.2:8443']) {
                 sh '''
                 export PATH=$HOME/bin:$PATH
@@ -69,7 +69,7 @@ pipeline {
         
         stage('deploy qa') {
             steps {
-                git url: 'https://github.com/erixrivas/draft-proyectofinal.git', credentialsId: 'githuberix', branch: 'folder-refactor'
+                git url: 'https://github.com/erixrivas/draft-proyectofinal.git', credentialsId: 'githuberix', branch: 'add-dockerhub'
                 withKubeConfig([credentialsId: 'minikube-token', serverUrl: 'https://192.168.49.2:8443']) {
                 sh '''
                 export PATH=$HOME/bin:$PATH
@@ -86,7 +86,7 @@ pipeline {
 
         stage('deploy prod') {
             steps {
-                git url: 'https://github.com/erixrivas/draft-proyectofinal.git', credentialsId: 'githuberix', branch: 'folder-refactor'
+                git url: 'https://github.com/erixrivas/draft-proyectofinal.git', credentialsId: 'githuberix', branch: 'add-dockerhub'
                 withKubeConfig([credentialsId: 'minikube-token', serverUrl: 'https://192.168.49.2:8443']) {
                 sh '''
                 export PATH=$HOME/bin:$PATH
