@@ -21,11 +21,11 @@ spec:
             - containerPort: 3000 # Puerto de Grafana
           resources:
             limits:
-              memory: "512Mi"
-              cpu: "500m"
-            requests:
-              memory: "256Mi"
+              memory: "250Mi"
               cpu: "250m"
+            requests:
+              memory: "135Mi"
+              cpu: "125m"
           env:
             - name: GF_SECURITY_ADMIN_PASSWORD
               value: "admin"
