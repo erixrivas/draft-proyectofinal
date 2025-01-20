@@ -11,9 +11,9 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 5173
-      nodePort: 30173
+      nodePort: 32008
     - name: metrics-port
       protocol: TCP
       port: 9100
       targetPort: 9100
-      nodePort: 30100
+      nodePort: 32009
