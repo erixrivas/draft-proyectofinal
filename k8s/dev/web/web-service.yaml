@@ -4,9 +4,17 @@ metadata:
   name: web
   namespace: dev
 spec:
+  type: NodePort
   selector:
     io.kompose.service: web
   ports:
-    - protocol: TCP
+    - name: web-port
+      protocol: TCP
       port: 5173
       targetPort: 5173
+      nodePort: 30173
+    - name: metrics-port
+      protocol: TCP
+      port: 9100
+      targetPort: 9100
+      nodePort: 30100
