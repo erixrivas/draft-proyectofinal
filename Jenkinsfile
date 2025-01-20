@@ -59,8 +59,7 @@ pipeline {
                 kubectl version --client
                 kubectl -n dev apply -f k8s/dev/api/api-deployment.yaml,k8s/dev/api/api-service.yaml
                 kubectl -n dev apply -f k8s/dev/web/web-deployment.yaml,k8s/dev/web/web-service.yaml
-                kubectl -n dev apply -f k8s/dev/nginx/nginx-deployment-dev.yaml,k8s/dev/nginx/nginx-ingress.yaml
-                kubectl -n dev apply -f k8s/dev/nginx/nginx-secrets-dev.yaml,k8s/dev/nginx/nginx-service.yaml
+
                 '''
                 }
             }
@@ -76,8 +75,7 @@ pipeline {
                 kubectl version --client
                 kubectl -n qa apply -f k8s/qa/api/api-deployment.yaml,k8s/qa/api/api-service.yaml
                 kubectl -n qa apply -f k8s/qa/web/web-deployment.yaml,k8s/qa/web/web-service.yaml
-                kubectl -n qa apply -f k8s/qa/nginx/nginx-deployment-qa.yaml,k8s/qa/nginx/nginx-ingress.yaml
-                kubectl -n qa apply -f k8s/qa/nginx/nginx-secrets-qa.yaml,k8s/qa/nginx/nginx-service.yaml
+
                 '''
                 }
             }
@@ -93,8 +91,7 @@ pipeline {
                 kubectl version --client
                 kubectl -n prod apply -f k8s/prod/api/api-deployment.yaml,k8s/prod/api/api-service.yaml
                 kubectl -n prod apply -f k8s/prod/web/web-deployment.yaml,k8s/prod/web/web-service.yaml
-                kubectl -n prod apply -f k8s/prod/nginx/nginx-deployment-prod.yaml,k8s/prod/nginx/nginx-ingress.yaml
-                kubectl -n prod apply -f k8s/prod/nginx/nginx-secrets-prod.yaml,k8s/prod/nginx/nginx-service.yaml
+                
                 '''
                 }
             }
