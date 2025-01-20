@@ -15,7 +15,7 @@ data:
 
       - job_name: "api"
         static_configs:
-          - targets: ["api.dev.local:5000"]
+          - targets: ["api:9102"]
         metrics_path: /metrics
 
       - job_name: "web"
