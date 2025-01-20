@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: leopoldox3/nginx-avatares:v1
+          image: erixrivas/nginx-avatares:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80

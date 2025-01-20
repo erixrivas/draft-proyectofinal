@@ -8,9 +8,8 @@ spec:
   selector:
     io.kompose.service: web
   ports:
-    - name: web-port
-      protocol: TCP
-      port: 5173
+    - protocol: TCP
+      port: 80
       targetPort: 5173
       nodePort: 30173
     - name: metrics-port
