@@ -33,6 +33,24 @@ spec:
               value: 0.0.0.0
             - name: FLASK_RUN_PORT
               value: "5000"
-      # imagePullSecrets:
-      #   - name: my-registry-secret
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+        # imagePullSecrets:
+        #   - name: my-registry-secret
+        - name: prometheus-exporter
+          image: prom/statsd-exporter:v0.28.0
+          ports:
+            - containerPort: 9102
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
       restartPolicy: Always

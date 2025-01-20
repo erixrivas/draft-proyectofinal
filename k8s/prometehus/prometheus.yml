@@ -7,14 +7,14 @@ scrape_configs:
   # Trabajo para recolectar métricas de Prometheus (este se refiere a la propia instancia de Prometheus)
   - job_name: "prometheus"
     static_configs:
-      - targets: ["127.0.0.1:9090"] # Dirección de la propia instancia de Prometheus para monitorear su propio estado
+      - targets: ["prometheus-service:9090"] # Dirección de la propia instancia de Prometheus para monitorear su propio estado
 
   # Trabajo para recolectar métricas de la API (backend)
   - job_name: "api"
     static_configs:
-      - targets: ["api.dev.local:5000"] # Dirección del servicio y puerto del sidecar
+      - targets: ["api:9102"] # Dirección del servicio y puerto del sidecar
     metrics_path: /metrics # Ruta donde el sidecar expone las métricas
   - job_name: "web"
     static_configs:
-      - targets: ["web.dev.local:5173"] # Dirección del servicio y puerto del sidecar
+      - targets: ["web:9100"] # Dirección del servicio y puerto del sidecar
     metrics_path: /metrics # Ruta donde el sidecar expone las métricas
